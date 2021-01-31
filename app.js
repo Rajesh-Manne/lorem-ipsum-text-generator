@@ -24,10 +24,23 @@ const value = parseInt(amount.value);
 // console.log(`length ${text.length}`)
 const random = Math.floor(Math.random()*text.length);
 console.log(random)
-// console.log(typeof value);
-if(value >= 0 && value <= 8){
-result.innerHTML = `<p class="result">${text[value]} </p>`
+console.log(typeof value);
+// if(value >= 0 && value <= 8){
+// result.innerHTML = `<p class="result">${text[value]} </p>`
+// }else{
+//   result.innerHTML = `<p class="result">Enter a numeric value between 0  to 8 </p>`
+// }
+// });
+
+if(isNaN(value) || value < 0 || value > 9){
+  result.innerHTML = `<p class="result">${text[random]}</p>`
 }else{
-  result.innerHTML = `<p class="result">Enter a numeric value between 0  to 8 </p>`
+  let tempText = text.slice(0,value);
+  console.log(tempText);
+  tempText = tempText.map(function(item){
+    return `<p class="result">${item}</p> `
+  });
+  console.log(`tempText ${tempText}`);
+  result.innerHTML = tempText;
 }
 });
